@@ -12,9 +12,7 @@ output/
   data.tar.gz       # Tarred YAML + JSON data files (_data/*.yml, assets/data/*.json)
   charts/           # Generated SVG visualizations (individual files for easy diffing)
 input/
-  dblp_checksum.txt # SHA-256 of the DBLP XML used
-  pipeline_args.txt # Arguments passed to the pipeline
-  pipeline.log      # Pipeline stdout/stderr
+  dblp_checksum.txt # SHA-256 of the DBLP XML used (empty if not available)
   run_metadata.txt  # Git revisions, timestamps, cache version
 ```
 
