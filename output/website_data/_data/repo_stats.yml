@@ -4,12 +4,12 @@ overall:
   total_forks: 14109
   max_stars: 14346
   max_forks: 1855
-  zenodo_repos: 796
-  total_views: 175526
-  total_downloads: 177104
+  zenodo_repos: 809
+  total_views: 179112
+  total_downloads: 156349
   avg_stars: 89.3
   avg_forks: 12.0
-  last_updated: 2026-04-07 19:39:57 UTC
+  last_updated: 2026-04-07 20:06:39 UTC
 by_conference:
 - name: ACSAC
   github_repos: 158
