@@ -1,0 +1,6 @@
+conf_regex: .*20[12][0-9]
+output_dir: ../reprodb.github.io
+save_results: true
+results_dir: ../reprodb-pipeline-results
+push: true
+timestamp: 2026-04-09 22:26:57 CEST
