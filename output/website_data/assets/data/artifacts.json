@@ -13190,6 +13190,216 @@
     ]
   },
   {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "XBOOT: Free-XOR Gates for CKKS with Applications to Transciphering",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a33/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Accelerating NTT with RISC-V Vector Extension for Fully Homomorphic Encryption",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a34/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Entropy extractor based high-throughput post-processings for True Random Number Generators",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a35/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "A Fast Heuristic for Mapping Boolean Circuits to Functional Bootstrapping",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a36/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "ABE Cubed: Advanced Benchmarking Extensions for ABE Squared",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a37/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "pracy: A Practical Compiler for Attribute-Based Encryption in Python",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a38/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Accelerating Hash-Based Polynomial Commitment Schemes with Linear Prover Time",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a39/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "ECTester: Reverse-engineering side-channel countermeasures of ECC implementations",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a40/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "HADES: Automated Hardware Design Exploration for Cryptographic Primitives",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a41/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Fault Attacks on ECC Signature Verification",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a42/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Generation of Fast Finite Field Arithmetic for Cortex-M4 with ECDH and SQIsign Applications Artifacts Functional",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a43/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Fault Injection Evaluation with Statistical Analysis - How to Deal with Nearly Fabricated Large Circuits",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a44/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Let us walk on the 3-isogeny graph: efficient, fast, and simple",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a45/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Sharing the Mask: TFHE Bootstrapping on Packed Messages",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a46/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Constant-Cycle Hardware Private Circuits",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a47/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Avengers assemble! Supervised learning meets lattice reduction --- A single power trace attack against CRYSTALS-Kyber key generation",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a48/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Masking-Friendly Post-Quantum Signatures in the Threshold-Computation-in-the-Head Framework",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a49/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "Faster amortized bootstrapping using the incomplete NTT for free",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a50/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "A New Perspective on Key Switching for BGV-like Schemes",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a51/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "BASTION: A Framework for Secure Third-Party IP Integration in NoC-based SoC Platforms",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a54/"
+    ]
+  },
+  {
+    "conference": "CHES",
+    "category": "security",
+    "year": 2025,
+    "title": "mid-pSquare: Leveraging the Strong Side-Channel Security of Prime-Field Masking in Software",
+    "badges": [],
+    "artifact_urls": [
+      "https://artifacts.iacr.org/tches/2025/a55/"
+    ]
+  },
+  {
     "conference": "NDSS",
     "category": "security",
     "year": 2024,
@@ -20618,6 +20828,110 @@
     ],
     "artifact_urls": [
       "https://github.com/dnet-tee/wait-a-cycle/tree/systex25-artifacts"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "Epsilon: A Bring-Your-Own-Data Research Platform with Trusted Verification",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://github.com/Epsilon-Data/epsilon"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "StepOverflow: PMC Overflows on AMD SEV",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://github.com/UzL-ITS/StepOverflow"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "CACTEE: Confidential Asset Certification using Trusted Execution Environments",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://github.com/Nokia-Bell-Labs/confidential-asset-certification-using-tees"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "AI Agents Need Both Hardware-Backed Security and Application-Level Guardrails",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://codeberg.org/BarryShichenHu/Secure_AI_Agent/src/tag/artifact-evaluation"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "Control-Flow Balancing for Texas Instruments IPE",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://github.com/martonbognar/ipe-balancing"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "Breaking Isolation: Last-level Cache Side-Channel Attacks on AWS Nitro Enclaves",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://codeberg.org/monder/LLCEnclave.git"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "Optimizing Launch Latency for Confidential VMs with Device Passthrough in the Linux KVM Hypervisor",
+    "badges": [
+      "Available",
+      "Functional"
+    ],
+    "artifact_urls": [
+      "https://github.com/ntu-ssl/start-up-optimization"
+    ]
+  },
+  {
+    "conference": "SYSTEX",
+    "category": "security",
+    "year": 2026,
+    "title": "Keystone with Linux PREEMPT_RT: Real-Time Enclaves on RISC-V?",
+    "badges": [
+      "Available",
+      "Reusable"
+    ],
+    "artifact_urls": [
+      "https://github.com/ReSP-Lab/2026-systex-keystone-rt-linux/tree/artifact-submission-version"
     ]
   },
   {
