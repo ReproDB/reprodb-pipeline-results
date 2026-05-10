@@ -421,39 +421,68 @@
     return '';
   }
 
-  // Load data
-  var availPromise = fetch(cfg.availability)
-    .then(function(r) { return r.json(); })
-    .then(function(avail) {
-      availabilityCheckedAt = (avail.summary && avail.summary.checked_at) ? avail.summary.checked_at.replace(/ UTC$/, '') : '';
-      (avail.records || []).forEach(function(rec) {
-        var u = (rec.url || '').replace(/\/+$/, '');
-        if (u) {
-          if (rec.accessible === false) urlAccessible[u] = false;
-          else if (urlAccessible[u] === undefined) urlAccessible[u] = true;
-        }
-      });
-      availabilityLoaded = true;
-      if (filtered.length > 0) renderResults();
-    })
-    .catch(function() { /* availability data not critical */ });
+  /* ── Deferred loaders — fetch after page load to avoid blocking ── */
 
-  // Load author profiles for profile cards
-  var profilesPromise = fetch(cfg.authorProfiles)
-    .then(function(r) { return r.json(); })
-    .then(function(data) { authorProfiles = data || []; })
-    .catch(function() { authorProfiles = []; });
+  function loadProfiles() {
+    var p1 = fetch(cfg.authorProfiles)
+      .then(function(r) { return r.json(); })
+      .then(function(data) { authorProfiles = data || []; })
+      .catch(function() { authorProfiles = []; });
 
-  // Load institution data for profile cards
-  var instPromise = fetch(cfg.institutions)
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      institutionData = (data || []).filter(function(inst) {
-        var a = (inst.affiliation || '').toLowerCase();
-        return a && a !== 'unknown' && !a.startsWith('_');
-      });
-    })
-    .catch(function() { institutionData = []; });
+    var p2 = fetch(cfg.institutions)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        institutionData = (data || []).filter(function(inst) {
+          var a = (inst.affiliation || '').toLowerCase();
+          return a && a !== 'unknown' && !a.startsWith('_');
+        });
+      })
+      .catch(function() { institutionData = []; });
+
+    Promise.all([p1, p2]).then(function() {
+      // Re-render profile cards if the user is already searching
+      if (filtered.length > 0 || document.getElementById('searchBox').value.trim().length >= 2) {
+        var raw = document.getElementById('searchBox').value.trim();
+        var cleaned = raw.replace(/#(unavailable|awarded|github|zenodo|nourl)/g, '').trim();
+        var terms = normalizeText(cleaned).split(/\s+/).filter(function(t) { return t.length > 0; });
+        renderProfileCards(raw, terms);
+      }
+    });
+  }
+
+  function loadAvailability() {
+    fetch(cfg.availability)
+      .then(function(r) { return r.json(); })
+      .then(function(avail) {
+        availabilityCheckedAt = (avail.summary && avail.summary.checked_at) ? avail.summary.checked_at.replace(/ UTC$/, '') : '';
+        (avail.records || []).forEach(function(rec) {
+          var u = (rec.url || '').replace(/\/+$/, '');
+          if (u) {
+            if (rec.accessible === false) urlAccessible[u] = false;
+            else if (urlAccessible[u] === undefined) urlAccessible[u] = true;
+          }
+        });
+        availabilityLoaded = true;
+        if (filtered.length > 0) renderResults();
+      })
+      .catch(function() { /* availability data not critical */ });
+  }
+
+  /** Schedule supplemental fetches after page load. */
+  function deferLoad(fn) {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(fn);
+    } else {
+      setTimeout(fn, 1);
+    }
+  }
+
+  window.addEventListener('load', function() {
+    deferLoad(loadProfiles);
+    deferLoad(loadAvailability);
+  });
+
+  /* ── Primary data load — only search_data.json is fetched eagerly ─ */
 
   fetch(cfg.searchData)
     .then(function(r) { return r.json(); })
