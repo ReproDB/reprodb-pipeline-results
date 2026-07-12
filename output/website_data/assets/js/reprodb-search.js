@@ -104,7 +104,7 @@
         if (d.artifact_urls && d.artifact_urls.length > 0) return false;
       }
       if (onlyArtifinder) {
-        if (!d.artifinder_urls || d.artifinder_urls.length === 0) return false;
+        if (String(d.source || '').toLowerCase() !== 'artifinder') return false;
       }
       if (terms.length === 0) return true;
       return terms.every(function(t) { return d._search.indexOf(t) !== -1; });
@@ -175,7 +175,7 @@
     var status = document.getElementById('searchStatus');
     var hero = document.getElementById('search-hero');
     var query = document.getElementById('searchBox').value.trim();
-    var cleaned = query.replace(/#(unavailable|awarded|github|zenodo|nourl)/g, '').trim();
+    var cleaned = query.replace(/#(unavailable|awarded|github|zenodo|nourl|artifinder)/g, '').trim();
     var terms = normalizeText(cleaned).split(/\s+/).filter(function(t) { return t.length > 0; });
     var yearVal = document.getElementById('yearFilter').value;
     var venueVal = document.getElementById('venueFilter').value;
@@ -257,31 +257,34 @@
       } else if (d.paper_url) {
         links.push('<a href="' + escHtml(normalizeUrl(d.paper_url)) + '" target="_blank" rel="noopener">📄 Paper</a>');
       }
-      // Artifact URLs (unified list)
+      if (d.appendix_url) links.push('<a href="' + escHtml(normalizeUrl(d.appendix_url)) + '" target="_blank" rel="noopener">📋 Appendix</a>');
+      // Artifact URLs from scraped sources first, then ArtiFinder-discovered URLs.
       var artUrlList = artUrls;
       if (artUrlList.length === 1) {
         var isGH = artUrlList[0].indexOf('github.com') !== -1;
-        var lbl = isGH ? '💻 GitHub' : '📦 Artifact';
+        var isZenodo = artUrlList[0].indexOf('zenodo.org') !== -1;
+        var lbl = isGH ? '💻 GitHub' : (isZenodo ? '📦 Zenodo' : '📦 Artifact');
         var avail1 = availabilityTag(artUrlList[0]);
         links.push('<a href="' + escHtml(artUrlList[0]) + '" target="_blank" rel="noopener">' + lbl + '</a>' + avail1);
       } else {
         artUrlList.forEach(function(u, i) {
           if (u) {
             var isGH = u.indexOf('github.com') !== -1;
-            var lbl = isGH ? '💻 GitHub' : '📦 Artifact';
+            var isZenodo = u.indexOf('zenodo.org') !== -1;
+            var lbl = isGH ? '💻 GitHub' : (isZenodo ? '📦 Zenodo' : '📦 Artifact');
             if (artUrlList.length > 1) lbl += ' #' + (i+1);
             var availN = availabilityTag(u);
             links.push('<a href="' + escHtml(u) + '" target="_blank" rel="noopener">' + lbl + '</a>' + availN);
           }
         });
       }
-      if (d.appendix_url) links.push('<a href="' + escHtml(normalizeUrl(d.appendix_url)) + '" target="_blank" rel="noopener">📋 Appendix</a>');
       // ArtiFinder-discovered links: not manually verified, no badges.
       var afUrls = (d.artifinder_urls || []).map(normalizeUrl);
       afUrls.forEach(function(u) {
         if (!u) return;
         var isGH = u.indexOf('github.com') !== -1;
-        var lbl = isGH ? '💻 GitHub' : '📦 Artifact';
+        var isZenodo = u.indexOf('zenodo.org') !== -1;
+        var lbl = isGH ? '💻 GitHub' : (isZenodo ? '📦 Zenodo' : '📦 Artifact');
         links.push('<a class="artifinder-link" href="' + escHtml(u) + '" target="_blank" rel="noopener">' + lbl + '</a>' + artifinderTag());
       });
       var linksLine = links.length > 0 ? links.join(' &middot; ') : '';
@@ -511,7 +514,7 @@
       // Re-render profile cards if the user is already searching
       if (filtered.length > 0 || document.getElementById('searchBox').value.trim().length >= 2) {
         var raw = document.getElementById('searchBox').value.trim();
-        var cleaned = raw.replace(/#(unavailable|awarded|github|zenodo|nourl)/g, '').trim();
+        var cleaned = raw.replace(/#(unavailable|awarded|github|zenodo|nourl|artifinder)/g, '').trim();
         var terms = normalizeText(cleaned).split(/\s+/).filter(function(t) { return t.length > 0; });
         renderProfileCards(raw, terms);
       }
