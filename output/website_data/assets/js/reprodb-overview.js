@@ -19,7 +19,20 @@
     var D;
     try { D = JSON.parse(dataEl.textContent); } catch(e) { return; }
 
-    var years = D.years;
+    /* Extend artifact years with committee-coverage years (e.g. AE committees
+       announced before artifact submissions are collected). */
+    var _yrSet = {};
+    (D.years || []).forEach(function(y) { _yrSet[y] = true; });
+    (D.committeeYears || []).forEach(function(y) { _yrSet[y] = true; });
+    var years = Object.keys(_yrSet).sort();
+    /* Align artifact count arrays with the extended year list */
+    var _artYrMap = {};
+    (D.years || []).forEach(function(y, i) {
+      _artYrMap[y] = { sys: (D.sysCounts || [])[i] || 0, sec: (D.secCounts || [])[i] || 0, tot: (D.totCounts || [])[i] || 0 };
+    });
+    var sysCounts = years.map(function(y) { return _artYrMap[y] ? _artYrMap[y].sys : 0; });
+    var secCounts = years.map(function(y) { return _artYrMap[y] ? _artYrMap[y].sec : 0; });
+    var totCounts = years.map(function(y) { return _artYrMap[y] ? _artYrMap[y].tot : 0; });
 
     /* ===== 1. Artifact Growth Chart ===== */
     var growthEl = document.getElementById('artifactGrowthChart');
@@ -32,9 +45,9 @@
         xAxis: { type: 'category', data: years },
         yAxis: { type: 'value', name: 'Artifacts', min: 0 },
         series: [
-          { name: 'Systems', type: 'bar', stack: 'artifacts', data: D.sysCounts, itemStyle: { color: SYS_COLOR } },
-          { name: 'Security', type: 'bar', stack: 'artifacts', data: D.secCounts, itemStyle: { color: SEC_COLOR } },
-          { name: 'Total', type: 'line', data: D.totCounts, itemStyle: { color: ReproDB.themeColors().totalLine }, lineStyle: { width: 2 }, symbolSize: 6, z: 10 }
+          { name: 'Systems', type: 'bar', stack: 'artifacts', data: sysCounts, itemStyle: { color: SYS_COLOR } },
+          { name: 'Security', type: 'bar', stack: 'artifacts', data: secCounts, itemStyle: { color: SEC_COLOR } },
+          { name: 'Total', type: 'line', data: totCounts, itemStyle: { color: ReproDB.themeColors().totalLine }, lineStyle: { width: 2 }, symbolSize: 6, z: 10 }
         ]
       });
       ReproDB.registerEChart(chart);
@@ -131,6 +144,8 @@
       var el = document.getElementById('partRateChartCombined');
       if (!el) return;
       var yrSet = {};
+      /* Extend x-axis to cover all artifact/committee years, not just participation years */
+      years.forEach(function(y) { yrSet[y] = true; });
       if (sysData && sysData.years) sysData.years.forEach(function(y) { yrSet[y] = true; });
       if (secData && secData.years) secData.years.forEach(function(y) { yrSet[y] = true; });
       var yrs = Object.keys(yrSet).sort();
